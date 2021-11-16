@@ -24,8 +24,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: <service_name>
-  namespace: <namespace>
+  name: service-metcheverry-tekton
+  namespace: default
 spec:
   type: ClusterIP
   selector:
