@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hello-containers-labtekton2
-  namespace: <namespace>
+  namespace: default
   labels:
      app: hello-containers-labtekton2
 spec:
