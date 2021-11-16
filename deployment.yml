@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-containers-labtekton2
+  namespace: <namespace>
+  labels:
+     app: hello-containers-labtekton2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-containers-labtekton2
+  template:
+    metadata:
+      labels:
+        app: hello-containers-labtekton2
+    spec:
+      containers:
+      - name: hello-containers-labtekton2
+        image: us.icr.io/<namespace>/<image>:<tag>
+        ports:
+          - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: <service_name>
+  namespace: <namespace>
+spec:
+  type: ClusterIP
+  selector:
+    app: hello-containers-labtekton2
+  ports:
+    - port: 8080
+      targetPort: 8080
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+    name: ruta-metcheverry-tekton
+    namespace: default
+spec:
+    to:
+        kind: Service
+        name: service-metcheverry-tekton
